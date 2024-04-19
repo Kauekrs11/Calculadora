@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora</title>
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .calculator {
+        background-color: #333;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        max-width: 300px;
+    }
+
+    #display {
+        grid-column: span 4;
+        background-color: #444;
+        border: none;
+        border-radius: 6px;
+        padding: 10px;
+        font-size: 24px;
+        color: #fff;
+        text-align: right;
+        box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .button {
+        background-color: #555;
+        border: none;
+        border-radius: 6px;
+        padding: 20px;
+        font-size: 18px;
+        color: #fff;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .button:hover {
+        background-color: #777;
+    }
+
+    .button.operator {
+        background-color: #ff9500;
+    }
+
+    .button.operator:hover {
+        background-color: #e58300;
+    }
+
+    .button.equal {
+        background-color: #4cd964;
+    }
+
+    .button.equal:hover {
+        background-color: #44bd59;
+    }
+</style>
+</head>
+<body>
+<div class="calculator">
+    <input type="text" id="display" disabled>
+    <input type="button" class="button" value="7" onclick="addToDisplay('7')">
+    <input type="button" class="button" value="8" onclick="addToDisplay('8')">
+    <input type="button" class="button" value="9" onclick="addToDisplay('9')">
+    <input type="button" class="button operator" value="/" onclick="addToDisplay('/')">
+    <input type="button" class="button" value="4" onclick="addToDisplay('4')">
+    <input type="button" class="button" value="5" onclick="addToDisplay('5')">
+    <input type="button" class="button" value="6" onclick="addToDisplay('6')">
+    <input type="button" class="button operator" value="*" onclick="addToDisplay('*')">
+    <input type="button" class="button" value="1" onclick="addToDisplay('1')">
+    <input type="button" class="button" value="2" onclick="addToDisplay('2')">
+    <input type="button" class="button" value="3" onclick="addToDisplay('3')">
+    <input type="button" class="button operator" value="-" onclick="addToDisplay('-')">
+    <input type="button" class="button" value="0" onclick="addToDisplay('0')">
+    <input type="button" class="button" value="." onclick="addToDisplay('.')">
+    <input type="button" class="button equal" value="=" onclick="calculate()">
+    <input type="button" class="button operator" value="+" onclick="addToDisplay('+')">
+    <input type="button" class="button" value="C" onclick="clearDisplay()">
+</div>
+<script>
+    function addToDisplay(value) {
+        document.getElementById('display').value += value;
+    }
+
+    function clearDisplay() {
+        document.getElementById('display').value = '';
+    }
+
+    function calculate() {
+        try {
+            document.getElementById('display').value = eval(document.getElementById('display').value);
+        } catch (error) {
+            document.getElementById('display').value = 'Error';
+        }
+    }
+</script>
+</body>
+</html>
